@@ -1,9 +1,9 @@
-package com.anywhere.somewhere.common.exception.handler;
+package com.some.where.common.exception.handler;
 
-import com.anywhere.somewhere.common.exception.custom.CustomException;
-import com.anywhere.somewhere.common.exception.custom.ErrorCode;
-import com.anywhere.somewhere.common.response.ApiResponse;
-import com.anywhere.somewhere.common.response.ErrorResponse;
+import com.some.where.common.exception.custom.CustomException;
+import com.some.where.common.exception.custom.ErrorCode;
+import com.some.where.common.response.ApiResponse;
+import com.some.where.common.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.FieldError;

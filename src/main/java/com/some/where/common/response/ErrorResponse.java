@@ -1,8 +1,8 @@
-package com.anywhere.somewhere.common.response;
+package com.some.where.common.response;
 
 
-import com.anywhere.somewhere.common.exception.custom.ErrorData;
-import com.anywhere.somewhere.common.exception.custom.ErrorType;
+import com.some.where.common.exception.custom.ErrorData;
+import com.some.where.common.exception.custom.ErrorType;
 
 public class ErrorResponse extends ApiResponse<ErrorData> {
 

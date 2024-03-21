@@ -1,7 +1,7 @@
-package com.anywhere.somewhere.common.response;
+package com.some.where.common.response;
 
-import com.anywhere.somewhere.common.exception.custom.ErrorType;
-import com.anywhere.somewhere.common.response.dto.Status;
+import com.some.where.common.exception.custom.ErrorType;
+import com.some.where.common.response.dto.Status;
 import lombok.Getter;
 
 @Getter
