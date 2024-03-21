@@ -1,4 +1,4 @@
-package com.anywhere.somewhere.common.exception.custom;
+package com.some.where.common.exception.custom;
 
 import lombok.Getter;
 
