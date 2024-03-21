@@ -1,6 +1,8 @@
 package com.some.where.domain.camping;
 
 import com.some.where.domain.BaseEntity;
+import com.some.where.domain.embedded.Address;
+import com.some.where.domain.embedded.Location;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 

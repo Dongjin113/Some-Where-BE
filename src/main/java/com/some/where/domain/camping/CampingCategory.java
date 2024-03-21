@@ -1,5 +1,6 @@
 package com.some.where.domain.camping;
 
+import com.some.where.domain.enums.CampingCategoryMenu;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

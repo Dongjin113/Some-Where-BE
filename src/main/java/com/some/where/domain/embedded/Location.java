@@ -1,4 +1,4 @@
-package com.some.where.domain.camping;
+package com.some.where.domain.embedded;
 
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
