@@ -39,3 +39,4 @@ out/
 ### Application Settings ###
 application-dev.yml
 src/main/generated/
+src/main/resources/data.sql

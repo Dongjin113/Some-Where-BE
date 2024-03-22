@@ -25,18 +25,18 @@ public class Camping extends BaseEntity {
     private Address address;
     private String homePage;
     private String owner;
-    @Embedded
     private String phoneNum;
-    @Embedded
-    private OperatePeriod operatePeriod;
-    @Embedded
-    private Amenity amenity;
-    @Embedded
-    private NearAmenity nearAmenity;
-    @Embedded
-    private Glamping glamping;
     private String subIntro;
     private String introduce;
+
+    @OneToOne
+    private OperatePeriod operatePeriod;
+    @OneToOne
+    private Amenity amenity;
+    @OneToOne
+    private NearAmenity nearAmenity;
+    @OneToOne
+    private Glamping glamping;
 
     @OneToMany(mappedBy = "camping")
     private List<CampingCategory> campingCategories = new ArrayList<>();

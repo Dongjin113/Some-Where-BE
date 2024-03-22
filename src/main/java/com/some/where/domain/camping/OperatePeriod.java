@@ -1,14 +1,26 @@
 package com.some.where.domain.camping;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import com.some.where.domain.BaseEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static jakarta.persistence.GenerationType.*;
+
 @Getter
-@Embeddable
+@Entity
 @NoArgsConstructor
-public class OperatePeriod {
+@Table(name = "operate_period")
+public class OperatePeriod extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "operate_id")
+    private Long id;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "operatePeriod")
+    @JoinColumn(name = "camping_id")
+    private Camping camping;
 
     @Column(name = "weekday_operate")
     private boolean weekday;
