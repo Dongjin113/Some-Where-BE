@@ -1,14 +1,29 @@
 package com.some.where.domain.camping;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import com.some.where.domain.BaseEntity;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static jakarta.persistence.FetchType.*;
+import static jakarta.persistence.GenerationType.*;
+import static lombok.AccessLevel.*;
+
+@Entity
 @Getter
-@Embeddable
-@NoArgsConstructor
-public class Amenity {
+@NoArgsConstructor(access = PROTECTED)
+@Table(name = "camping_amenity")
+public class Amenity extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "amenity_id")
+    private Long id;
+
+    @OneToOne(fetch = LAZY, mappedBy = "amenity")
+    @JoinColumn(name = "camping_id")
+    private Camping camping;
 
     @Column(name = "amenities_electric")
     private String electric;

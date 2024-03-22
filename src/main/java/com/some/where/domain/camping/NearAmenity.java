@@ -1,14 +1,26 @@
 package com.some.where.domain.camping;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import com.some.where.domain.BaseEntity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static jakarta.persistence.GenerationType.*;
+
 @Getter
-@Embeddable
+@Entity
+@Table(name = "camping_near_amenity")
 @NoArgsConstructor
-public class NearAmenity {
+public class NearAmenity extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "near_amenity_id")
+    private Long id;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "nearAmenity")
+    @JoinColumn(name = "camping_id")
+    private Camping camping;
 
     @Column(name = "near_fishing")
     private boolean fishing;
