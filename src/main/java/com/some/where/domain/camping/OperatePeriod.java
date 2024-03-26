@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.*;
 
 @Getter
@@ -18,7 +19,7 @@ public class OperatePeriod extends BaseEntity {
     @Column(name = "operate_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "operatePeriod")
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "camping_id")
     private Camping camping;
 
