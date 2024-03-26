@@ -18,10 +18,10 @@ public class Glamping extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "camping_glamping")
+    @Column(name = "glamping_id")
     private Long id;
 
-    @OneToOne(mappedBy = "glamping", fetch = LAZY)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "camping_id")
     private Camping camping;
 

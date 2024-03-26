@@ -14,4 +14,12 @@ public class Address {
     private Integer postNum;
     private String roadAddress;
     private String address;
+
+    public Address(String region, String city, Integer postNum, String roadAddress, String address) {
+        this.region = region;
+        this.city = city;
+        this.postNum = postNum;
+        this.roadAddress = roadAddress;
+        this.address = address;
+    }
 }

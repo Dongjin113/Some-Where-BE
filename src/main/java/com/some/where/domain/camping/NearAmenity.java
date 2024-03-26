@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.*;
 
 @Getter
@@ -18,7 +19,7 @@ public class NearAmenity extends BaseEntity {
     @Column(name = "near_amenity_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "nearAmenity")
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "camping_id")
     private Camping camping;
 
