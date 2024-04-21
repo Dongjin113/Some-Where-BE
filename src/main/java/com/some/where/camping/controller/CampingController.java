@@ -1,5 +1,6 @@
 package com.some.where.camping.controller;
 
+import com.some.where.camping.dto.request.LocationRequest;
 import com.some.where.camping.dto.response.CampingRegionCountsResponse;
 import com.some.where.camping.dto.response.CampingPreViewResponse;
 import com.some.where.camping.service.CampingService;
@@ -41,6 +42,20 @@ public class CampingController {
     ) {
         return new ApiResponse<>(
                 ErrorCode.SUCCESS, campingService.campingCountsByRegion()
+        );
+    }
+
+    /**
+     * 일정 위도 경도 범위내의 캠핑장 정보 받아오기
+     * @param locationRequest 북서, 동남의 위도와 경도
+     */
+    @GetMapping("/location")
+    private ApiResponse<List<CampingPreViewResponse>> findCampingByLocation(
+            @ModelAttribute LocationRequest locationRequest
+    ) {
+        return new ApiResponse<>(
+                ErrorCode.SUCCESS,
+                campingService.findCampingByLocation(locationRequest)
         );
     }
 }
