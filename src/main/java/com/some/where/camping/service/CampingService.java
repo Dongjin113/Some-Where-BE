@@ -1,5 +1,6 @@
 package com.some.where.camping.service;
 
+import com.some.where.camping.dto.request.LocationRequest;
 import com.some.where.camping.dto.response.CampingRegionCountsResponse;
 import com.some.where.camping.dto.response.CampingPreViewResponse;
 import com.some.where.camping.repository.*;
@@ -43,5 +44,22 @@ public class CampingService {
     @Transactional(readOnly = true)
     public List<CampingRegionCountsResponse> campingCountsByRegion() {
         return campingRepository.findGroupByAddressRegionCounts();
+    }
+
+    /**
+     * 동서남북 위도와 경도를 통해서
+     * 해당 범위내의 캠핑장을 검색해서 반환
+     *
+     * @param locationRequest
+     */
+    @Transactional(readOnly = true)
+    public List<CampingPreViewResponse> findCampingByLocation(LocationRequest locationRequest) {
+        return campingRepository.findAllByLocation(
+                        locationRequest.getWestLat(), locationRequest.getEastLat(),
+                        locationRequest.getNorthLng(), locationRequest.getSouthLng()
+                ).stream()
+                .map(camping -> CampingPreViewResponse.of(
+                        camping, camping.getCampingCategories()))
+                .toList();
     }
 }
