@@ -1,15 +1,13 @@
 package com.some.where.camping.controller;
 
+import com.some.where.camping.dto.response.CampingRegionCountsResponse;
 import com.some.where.camping.dto.response.CampingPreViewResponse;
 import com.some.where.camping.service.CampingService;
 import com.some.where.common.exception.custom.ErrorCode;
 import com.some.where.common.response.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,9 +27,20 @@ public class CampingController {
     private ApiResponse<List<CampingPreViewResponse>> campingMap(
             @PathVariable("region") String region
     ) {
-        log.info("method CampingService={}",campingService.getClass());
+        log.info("method CampingService={}", campingService.getClass());
         return new ApiResponse<>(
                 ErrorCode.SUCCESS, campingService.campingPreViewList(region)
+        );
+    }
+
+    /**
+     * 지역별 캠핑장 수 조회
+     */
+    @GetMapping("/region/counts")
+    private ApiResponse<List<CampingRegionCountsResponse>> campingRegionCounts(
+    ) {
+        return new ApiResponse<>(
+                ErrorCode.SUCCESS, campingService.campingCountsByRegion()
         );
     }
 }
