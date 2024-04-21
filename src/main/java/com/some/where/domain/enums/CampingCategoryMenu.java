@@ -5,10 +5,10 @@ import lombok.Getter;
 @Getter
 public enum CampingCategoryMenu {
 
-    NORMAL("일반야영장"),
-    CAR("자동차야영장"),
-    CARAVAN("카라반"),
-    GLAMPING("글램핑");
+    일반야영장("일반야영장"),
+    자동차야영장("자동차야영장"),
+    카라반("카라반"),
+    글램핑("글램핑");
 
     private final String Name;
 
