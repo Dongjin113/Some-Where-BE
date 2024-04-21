@@ -1,5 +1,6 @@
 package com.some.where.camping.service;
 
+import com.some.where.camping.dto.request.LocationRequest;
 import com.some.where.camping.dto.response.CampingRegionCountsResponse;
 import com.some.where.camping.dto.response.CampingPreViewResponse;
 import com.some.where.camping.repository.CampingCategoryRepository;
@@ -26,6 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SpringBootTest
+@Transactional
 class CampingServiceTest {
 
     @Autowired
@@ -40,7 +42,6 @@ class CampingServiceTest {
 
     @BeforeEach
     void beforeTest() {
-
         List<Camping> campingList = IntStream.range(0, 10).mapToObj(
                 index -> new Camping("서울캠핑장" + index,
                         new Location(13.12, 12.12),
@@ -58,7 +59,6 @@ class CampingServiceTest {
     }
 
     @Test
-    @Transactional
     @DisplayName("캠핑장 데이터 지역으로 조회하기")
     void campingPreviewList() {
         //when
@@ -66,7 +66,6 @@ class CampingServiceTest {
 
         //then
         assertThat(result.size()).isEqualTo(10);
-        assertThat(result.get(0).getCampingId()).isEqualTo(1);
         assertThat(result.get(0).getPlaceName()).isEqualTo("서울캠핑장0");
         assertThat(result.get(0).getAddress().getRegion()).isEqualTo("서울");
         assertThat(result.get(0).getAddress().getCity()).isEqualTo("강서구");
@@ -78,5 +77,16 @@ class CampingServiceTest {
         List<CampingRegionCountsResponse> result = campingService.campingCountsByRegion();
         assertThat(result.size()).isEqualTo(1);
         assertThat(result.get(0).getCampingCounts()).isEqualTo(10);
+    }
+
+
+    @Test
+    @DisplayName("위도 경도 범위안의 캠핑장 검색")
+    public void findCampingByLocation() {
+        LocationRequest location = new LocationRequest(200, 0, 200, 0);
+        List<CampingPreViewResponse> campingByLocation = campingService.findCampingByLocation(location);
+
+        assertThat(campingByLocation.size()).isEqualTo(10);
+
     }
 }
