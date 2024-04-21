@@ -2,6 +2,7 @@ package com.some.where.domain.camping;
 
 import com.some.where.domain.enums.CampingCategoryMenu;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,10 @@ public class CampingCategory {
 
     @Enumerated(STRING)
     private CampingCategoryMenu category;
+
+    @Builder
+    public CampingCategory(Camping camping, CampingCategoryMenu category) {
+        this.camping = camping;
+        this.category = category;
+    }
 }
