@@ -1,3 +1,8 @@
+# ERD
+
+![some-where-erd](https://github.com/Dongjin113/Some-Where-BE/assets/104759062/55528a4e-5537-4a4f-b02c-fb8510bc7883)
+
+
 # CustomException과 ResponseType 정의
 
 ## [✨ ErrorType Interface 생성](https://github.com/Dongjin113/Some-Where-BE/commit/61b1470b23068e01e09c1c4e997314bfa9eb6b7c) 
