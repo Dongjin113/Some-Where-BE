@@ -9,7 +9,6 @@ public class ErrorResponse extends ApiResponse<ErrorData> {
     public ErrorResponse(ErrorType errorCode) {
         super(errorCode);
     }
-
     public ErrorResponse(ErrorType errorCode, ErrorData errorData) {
         super(errorCode, errorData);
     }

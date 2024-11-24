@@ -8,7 +8,6 @@ import lombok.Getter;
 public class ApiResponse<T> {
 
     private Status status;
-
     private T data;
 
     public ApiResponse(ErrorType errorCode) {

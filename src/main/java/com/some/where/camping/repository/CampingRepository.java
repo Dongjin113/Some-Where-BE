@@ -14,7 +14,11 @@ public interface CampingRepository extends JpaRepository<Camping, Long>, Camping
     @Query("select distinct c from Camping c left join fetch c.campingCategories where c.address.region = :region")
     List<Camping> findAllByRegionFetchJoinCategory(@Param("region") Region region);
 
-    @Query("select new com.some.where.camping.dto.response.CampingRegionCountsResponse(c.address.region, Count(c))  from Camping c group by c.address.region")
+    @Query("""
+            select new com.some.where.camping.dto.response.CampingRegionCountsResponse(c.address.region, Count(c)) 
+            from Camping c 
+            group by c.address.region
+            """)
     List<CampingRegionCountsResponse> findGroupByAddressRegionCounts();
 
     @Query("""
@@ -22,5 +26,6 @@ public interface CampingRepository extends JpaRepository<Camping, Long>, Camping
             left join fetch c.campingCategories 
             where c.location.lat BETWEEN :westLat AND :eastLat 
             And c.location.lng BETWEEN :southLng AND :northLng """)
-    List<Camping> findAllByLocation(@Param("westLat") double westLat, @Param("eastLat") double eastLat, @Param("northLng") double northLng, @Param("southLng") double southLng);
+    List<Camping> findAllByLocation(@Param("westLat") double westLat, @Param("eastLat") double eastLat,
+                                    @Param("northLng") double northLng, @Param("southLng") double southLng);
 }

@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 public enum ErrorCode implements ErrorType{
 
     SUCCESS(HttpStatus.OK, "200", "OK"),
-
     INVALID_FORMAT(HttpStatus.BAD_REQUEST, "404", "데이터 검증 실패"),
     ;
 
